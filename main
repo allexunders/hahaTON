@@ -1,0 +1,42 @@
+// Объявление переменных
+int totalSupply = 100000000;  // Общее количество токенов
+int teamTokens = 10000000;    // Количество токенов для команды
+int monthlyRelease = 2000000; // Ежемесячное размораживание
+float burnRate = 0.5;       // Процент сжигания при транзакции
+
+// Кошельки для размораживания и развития
+string wallet1 = "UQCkJIV8Z6THXmlx4CQ7Kc3PC5VTCWLTY_I0k2BBpxdv_coy";
+string wallet2 = "UQACVLnOhwy3ctZwGKAMLoBaV7QXq3jzGWcORwSC9aCbgiRP";
+string developmentWallet = "EQAWCKvtEnlOOYr2rU9MAEVx-Q3Cc1NdgoNjsxuB41uqerLG";
+
+// Функция отправки токенов
+void send_tokens(string to, int amount) {
+    // Логика отправки токенов
+}
+
+// Функция сжигания токенов при транзакциях
+void burn_tokens(int amount) {
+    int burnAmount = amount * burnRate;
+    // Уменьшаем totalSupply на burnAmount
+    totalSupply -= burnAmount;
+}
+
+// Функция размораживания токенов команды
+void unfreeze_team_tokens() {
+    if (teamTokens >= monthlyRelease) {
+        send_tokens(wallet1, 1000000); // Отправляем 1 миллион на первый кошелёк
+        send_tokens(wallet2, 1000000); // Отправляем 1 миллион на второй кошелёк
+        teamTokens -= monthlyRelease;
+    }
+}
+
+// Функция размораживания токенов для развития
+void unfreeze_development_funds() {
+    send_tokens(developmentWallet, 2000000); // Отправляем 2 миллиона на кошелек развития
+}
+
+// Инициализация контракта с названием монеты
+void init_contract() {
+    string tokenName = "hahaTON";
+    // Дополнительная инициализация при необходимости
+}
